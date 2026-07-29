@@ -4,7 +4,7 @@
     <meta charset='UTF-8'/>
     <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'/>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
-    <title>Untuk Sarah Pininta Theresia ❤️</title>
+    <title>For Sarah Pininta Theresia ❤️</title>
     
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -98,19 +98,16 @@
             animation: bounce-slow 2s infinite;
         }
 
-        /* Scroll Snap Setup */
+        /* Layout Setup - Scroll Snap Dihapus, diganti jadi navigasi Klik */
         .story-container {
             height: 100vh;
-            overflow-y: scroll;
-            scroll-snap-type: y mandatory;
-            scroll-behavior: smooth;
+            overflow-y: hidden; /* Mengunci scroll manual secara permanen */
         }
         .story-section {
             height: 100vh;
             width: 100%;
-            scroll-snap-align: start;
             position: relative;
-            z-index: 1; /* Perbaikan: Memastikan background tidak tertutup oleh warna body */
+            z-index: 1; 
             display: flex;
             align-items: center;
             justify-content: center;
@@ -188,9 +185,9 @@
                 <p class="text-sm md:text-base italic text-gray-300 mb-8 md:mb-12">
                     Agak alay sih tapi yaudahlah ☺️
                 </p>
-                <button onclick="scrollKe('sec2')" class="animate-bounce-slow mt-4 text-rose-300 flex flex-col items-center opacity-80 hover:opacity-100 transition duration-300 focus:outline-none">
-                    <span class="text-xs md:text-sm uppercase tracking-widest mb-2 font-bold">Klik / Scroll ke bawah</span>
-                    <i class="fa-solid fa-chevron-down text-2xl md:text-3xl"></i>
+                <button onclick="scrollKe('sec2')" class="animate-bounce-slow mt-4 bg-white/10 hover:bg-white/20 border border-white/30 text-rose-300 px-6 py-2 rounded-full backdrop-blur-sm flex items-center gap-2 transition duration-300 focus:outline-none shadow-lg">
+                    <span class="text-xs md:text-sm uppercase tracking-widest font-bold">Lanjut</span>
+                    <i class="fa-solid fa-arrow-down"></i>
                 </button>
             </div>
         </section>
@@ -201,7 +198,7 @@
             <div class="absolute inset-0 bg-black/50 z-0"></div>
             
             <div class="max-w-5xl w-full mx-4 z-10 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16">
-                <!-- Polaroid Frame (Kiri di Laptop, Atas di HP) -->
+                <!-- Polaroid Frame -->
                 <div class="polaroid w-56 md:w-72 -rotate-3 md:-rotate-6 transform hover:rotate-0 transition duration-500 z-20 flex-shrink-0">
                     <img src="https://xxnameless21.github.io/Koleksi-foto/grid2.jpg" alt="Foto Sarah">
                 </div>
@@ -209,7 +206,12 @@
                 <div class="glass-dark p-6 md:p-10 rounded-2xl md:rounded-3xl text-center w-full max-w-md shadow-2xl border-t border-white/20">
                     <img src="https://feeldreams.github.io/pusn.gif" class="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4" alt="Cat">
                     <h2 class="text-3xl md:text-5xl font-caveat text-rose-300 mb-2 md:mb-4">Honestly..</h2>
-                    <p class="text-lg md:text-2xl font-medium text-gray-100">Aku beneran nyaman sama <b class="text-rose-400 text-xl md:text-3xl">kamu</b> yang :(</p>
+                    <p class="text-lg md:text-2xl font-medium text-gray-100 mb-6 md:mb-8">Aku beneran nyaman sama <b class="text-rose-400 text-xl md:text-3xl">kamu</b> yang :(</p>
+                    
+                    <button onclick="scrollKe('sec3')" class="animate-bounce-slow bg-rose-500/80 hover:bg-rose-500 text-white px-6 py-2 rounded-full shadow-lg transition duration-300 flex items-center gap-2 mx-auto">
+                        <span class="text-xs md:text-sm uppercase tracking-widest font-bold">Lanjut</span>
+                        <i class="fa-solid fa-arrow-down"></i>
+                    </button>
                 </div>
             </div>
         </section>
@@ -220,16 +222,24 @@
             <div class="absolute inset-0 bg-black/40 z-0"></div>
 
             <div class="max-w-6xl mx-4 z-10 w-full flex flex-col md:flex-row-reverse items-center justify-center gap-4 md:gap-12 mt-6 md:mt-0">
-                <!-- Decorative Photo (Kanan di Laptop, Atas Tengah di HP) -->
+                <!-- Decorative Photo -->
                 <div class="polaroid w-48 sm:w-56 md:w-72 rotate-3 md:rotate-6 z-20 flex-shrink-0 transform hover:-rotate-3 transition duration-500 self-center md:self-auto">
                     <img src="https://xxnameless21.github.io/Koleksi-foto/grid4.jpg" alt="Memories">
                 </div>
 
-                <!-- Teks Box (Scrollable di HP agar tidak luber) -->
-                <div class="glass p-6 md:p-10 rounded-2xl md:rounded-3xl shadow-2xl text-left border-l-4 border-l-rose-400 w-full max-w-2xl max-h-[60vh] md:max-h-[75vh] overflow-y-auto subtle-scrollbar">
-                    <p id="typewriter-text" class="text-sm md:text-xl leading-relaxed space-y-4 font-medium text-gray-100">
+                <!-- Teks Box -->
+                <div class="glass p-6 md:p-10 rounded-2xl md:rounded-3xl shadow-2xl text-left border-l-4 border-l-rose-400 w-full max-w-2xl max-h-[60vh] md:max-h-[75vh] overflow-y-auto subtle-scrollbar flex flex-col">
+                    <p id="typewriter-text" class="text-sm md:text-xl leading-relaxed space-y-4 font-medium text-gray-100 flex-grow">
                         <!-- Text injected via JS -->
                     </p>
+
+                    <!-- Tombol Lanjut (Sembunyi dulu sampai ketik selesai) -->
+                    <div id="btn-lanjut-sec3" class="mt-8 flex justify-center opacity-0 pointer-events-none transition-opacity duration-1000">
+                        <button onclick="scrollKe('sec4')" class="animate-bounce-slow bg-rose-500/80 hover:bg-rose-500 text-white px-6 py-2 rounded-full shadow-lg transition duration-300 flex items-center gap-2">
+                            <span class="text-xs md:text-sm uppercase tracking-widest font-bold">Lanjut</span>
+                            <i class="fa-solid fa-arrow-down"></i>
+                        </button>
+                    </div>
                 </div>
             </div>
         </section>
@@ -304,7 +314,6 @@
             setTimeout(() => {
                 welcomeScreen.style.display = 'none';
                 mainContent.classList.remove('opacity-0', 'pointer-events-none');
-                document.body.style.overflow = 'auto'; // Izinkan scrolling di main content
                 mulaiHujanHati();
             }, 1000);
         }
@@ -347,12 +356,9 @@
 
         function ketikTeks(htmlText, elementId, speed) {
             const el = document.getElementById(elementId);
-            const container = el.parentElement; // Ambil kotak glass tempat teks berada
-            const mainContent = document.getElementById('main-content');
+            const container = el.parentElement; 
             
-            // 1. Kunci scroll halaman utama (gabisa geser section)
-            mainContent.style.overflowY = 'hidden'; 
-            // 2. Kunci scroll pada kotak teks agar pengguna tidak bisa scroll manual saat sedang diketik
+            // 1. Kunci scroll pada kotak teks agar tidak berantakan saat mengetik
             container.style.overflowY = 'hidden';
 
             el.innerHTML = '';
@@ -372,7 +378,7 @@
                     
                     i++;
                     
-                    // 3. Auto-scroll kotak teks ke bawah secara perlahan mengikuti baris teks
+                    // 2. Auto-scroll kotak teks ke bawah mengikuti teks
                     container.scrollTop = container.scrollHeight;
                     
                     if (isTag) {
@@ -382,9 +388,11 @@
                     }
                 } else {
                     el.classList.remove('type-cursor');
-                    // 4. Buka kembali kunci scroll setelah teks SELESAI diketik!
-                    mainContent.style.overflowY = 'scroll';
+                    // 3. Buka scroll kotak teks dan TAMPILKAN tombol Lanjut setelah selesai!
                     container.style.overflowY = 'auto';
+                    document.getElementById('btn-lanjut-sec3').classList.remove('opacity-0', 'pointer-events-none');
+                    // Tambahan auto-scroll agar tombol langsung terlihat
+                    setTimeout(() => container.scrollTop = container.scrollHeight, 100);
                 }
             }
             type();
@@ -435,8 +443,13 @@
         // --- Fungsi Tombol Scroll ---
         function scrollKe(targetId) {
             const target = document.getElementById(targetId);
-            if(target) {
-                target.scrollIntoView({ behavior: 'smooth' });
+            const container = document.getElementById('main-content');
+            if(target && container) {
+                // Gunakan javascript untuk menggeser kontainer utama yang terkunci
+                container.scrollTo({
+                    top: target.offsetTop,
+                    behavior: 'smooth'
+                });
             }
         }
     </script>
