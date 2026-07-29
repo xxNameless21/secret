@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset='UTF-8'/>
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, user-scalable=no'/>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'/>
+    <title>Untuk Sarah Pininta Theresia ❤️</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Quicksand:wght@400;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <script src="https://kit.fontawesome.com/4f3ce16e3e.js" crossorigin="anonymous"></script>
+
+    <style>
+        :root {
+            --primary-font: 'Quicksand', sans-serif;
+            --accent-font: 'Caveat', cursive;
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            font-family: var(--primary-font);
+            background-color: #0f172a;
+            color: white;
+            overflow: hidden; /* Prevent manual scroll until opened */
+            height: 100vh;
+        }
+
+        /* Hide scrollbar for Chrome, Safari and Opera */
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        /* Hide scrollbar for IE, Edge and Firefox */
+        .no-scrollbar {
+            -ms-overflow-style: none;  /* IE and Edge */
+            scrollbar-width: none;  /* Firefox */
+        }
+
+        .font-caveat { font-family: var(--accent-font); }
+
+        /* Glassmorphism Effect */
+        .glass {
+            background: rgba(255, 255, 255, 0.15);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+        }
+
+        .glass-dark {
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        /* Polaroid Frame Effect */
+        .polaroid {
+            background: white;
+            padding: 10px 10px 40px 10px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+            border-radius: 4px;
+            transition: transform 0.3s ease;
+        }
+        .polaroid img {
+            width: 100%;
+            height: auto;
+            border-radius: 2px;
+        }
+
+        /* Animations */
+        @keyframes floatHeart {
+            0% { transform: translateY(100vh) scale(0.5) rotate(0deg); opacity: 1; }
+            100% { transform: translateY(-10vh) scale(1.5) rotate(360deg); opacity: 0; }
+        }
+
+        .floating-heart {
+            position: fixed;
+            color: #fb7185; /* rose-400 */
+            z-index: 50;
+            pointer-events: none;
+            animation: floatHeart linear forwards;
+            text-shadow: 0 0 10px rgba(251, 113, 133, 0.5);
+        }
+
+        @keyframes bounce-slow {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(10px); }
+        }
+        .animate-bounce-slow {
+            animation: bounce-slow 2s infinite;
+        }
+
+        /* Scroll Snap Setup */
+        .story-container {
+            height: 100vh;
+            overflow-y: scroll;
+            scroll-snap-type: y mandatory;
+            scroll-behavior: smooth;
+        }
+        .story-section {
+            height: 100vh;
+            width: 100%;
+            scroll-snap-align: start;
+            position: relative;
+            z-index: 1; /* Perbaikan: Memastikan background tidak tertutup oleh warna body */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        /* Background Media Sizing */
+        .bg-media {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+            filter: brightness(0.6);
+        }
+
+        /* Typewriter Cursor */
+        .type-cursor::after {
+            content: '|';
+            animation: blink 1s infinite;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Subtle Scrollbar khusus untuk kotak teks panjang di HP */
+        .subtle-scrollbar::-webkit-scrollbar {
+            width: 6px;
+        }
+        .subtle-scrollbar::-webkit-scrollbar-track {
+            background: rgba(255, 255, 255, 0.05); 
+            border-radius: 10px;
+        }
+        .subtle-scrollbar::-webkit-scrollbar-thumb {
+            background: rgba(251, 113, 133, 0.5); /* Warna Rose-400 */
+            border-radius: 10px;
+        }
+        .subtle-scrollbar::-webkit-scrollbar-thumb:hover {
+            background: rgba(251, 113, 133, 0.8);
+        }
+    </style>
+</head>
+<body class="antialiased selection:bg-rose-400 selection:text-white">
+
+    <!-- Audio Source -->
+    <audio id="bg-music" src="https://feeldreams.github.io/maukahkamu/seandainya.mp3" preload="auto" loop></audio>
+
+    <!-- Layar pembuka agar audio bisa otomatis diputar setelah interaksi user -->
+    <div id="welcome-screen" class="fixed inset-0 z-[100] flex flex-col items-center justify-center bg-slate-900 transition-opacity duration-1000">
+        <div class="glass p-8 rounded-3xl text-center max-w-sm mx-4 transform transition hover:scale-105 duration-500">
+            <img src="https://feeldreams.github.io/bunga.gif" alt="Bunga" class="w-24 h-24 mx-auto mb-4 drop-shadow-lg">
+            <h1 class="text-3xl font-caveat mb-2">Hai, Sarah Pininta Theresia!</h1>
+            <p class="text-sm mb-6 text-gray-200">Ada pesan kecil nih buat kamu...</p>
+            <button onclick="bukaSurat()" class="bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 px-8 rounded-full shadow-lg shadow-rose-500/50 transition duration-300 flex items-center justify-center gap-2 mx-auto">
+                <i class="fa-solid fa-envelope-open-text"></i> Buka Pesan
+            </button>
+        </div>
+    </div>
+
+    <main id="main-content" class="story-container no-scrollbar opacity-0 pointer-events-none transition-opacity duration-1000">
+        
+        <!-- SECTION 1: Greeting -->
+        <section id="sec1" class="story-section">
+            <video autoplay loop muted playsinline class="bg-media">
+                <source src="https://xxnameless21.github.io/Koleksi-foto/GIF1.mp4" type="video/mp4">
+            </video>
+            <div class="glass p-8 md:p-14 rounded-3xl text-center max-w-md md:max-w-2xl mx-4 shadow-2xl relative z-10 flex flex-col items-center transform transition duration-700 hover:scale-[1.02]">
+                <h1 class="text-4xl md:text-6xl font-caveat mb-4 md:mb-6 text-rose-300 tracking-wide">Hai Sarah! ✨</h1>
+                <p class="text-lg md:text-2xl leading-relaxed mb-4 text-gray-100">
+                    Aku cuma mau bilang <b>terimakasih</b> udah mau stay sama aku terus ☺️
+                </p>
+                <p class="text-sm md:text-base italic text-gray-300 mb-8 md:mb-12">
+                    Agak alay sih tapi yaudahlah ☺️
+                </p>
+                <button onclick="scrollKe('sec2')" class="animate-bounce-slow mt-4 text-rose-300 flex flex-col items-center opacity-80 hover:opacity-100 transition duration-300 focus:outline-none">
+                    <span class="text-xs md:text-sm uppercase tracking-widest mb-2 font-bold">Klik / Scroll ke bawah</span>
+                    <i class="fa-solid fa-chevron-down text-2xl md:text-3xl"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- SECTION 2: Honestly -->
+        <section id="sec2" class="story-section">
+            <img src="https://xxnameless21.github.io/Koleksi-foto/grid2.jpg" class="bg-media blur-sm scale-110 md:scale-100 md:object-cover" alt="Background">
+            <div class="absolute inset-0 bg-black/50 z-0"></div>
+            
+            <div class="max-w-5xl w-full mx-4 z-10 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16">
+                <!-- Polaroid Frame (Kiri di Laptop, Atas di HP) -->
+                <div class="polaroid w-56 md:w-72 -rotate-3 md:-rotate-6 transform hover:rotate-0 transition duration-500 z-20 flex-shrink-0">
+                    <img src="https://xxnameless21.github.io/Koleksi-foto/grid2.jpg" alt="Foto Sarah">
+                </div>
+                
+                <div class="glass-dark p-6 md:p-10 rounded-2xl md:rounded-3xl text-center w-full max-w-md shadow-2xl border-t border-white/20">
+                    <img src="https://feeldreams.github.io/pusn.gif" class="w-16 h-16 md:w-20 md:h-20 mx-auto mb-4" alt="Cat">
+                    <h2 class="text-3xl md:text-5xl font-caveat text-rose-300 mb-2 md:mb-4">Honestly..</h2>
+                    <p class="text-lg md:text-2xl font-medium text-gray-100">Aku beneran nyaman sama <b class="text-rose-400 text-xl md:text-3xl">kamu</b> yang :(</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 3: Long Text Memories -->
+        <section id="sec3" class="story-section">
+            <img src="https://xxnameless21.github.io/Koleksi-foto/grid3.jpg" class="bg-media blur-md scale-110" alt="Background">
+            <div class="absolute inset-0 bg-black/40 z-0"></div>
+
+            <div class="max-w-6xl mx-4 z-10 w-full flex flex-col md:flex-row-reverse items-center justify-center gap-4 md:gap-12 mt-6 md:mt-0">
+                <!-- Decorative Photo (Kanan di Laptop, Atas Tengah di HP) -->
+                <div class="polaroid w-48 sm:w-56 md:w-72 rotate-3 md:rotate-6 z-20 flex-shrink-0 transform hover:-rotate-3 transition duration-500 self-center md:self-auto">
+                    <img src="https://xxnameless21.github.io/Koleksi-foto/grid4.jpg" alt="Memories">
+                </div>
+
+                <!-- Teks Box (Scrollable di HP agar tidak luber) -->
+                <div class="glass p-6 md:p-10 rounded-2xl md:rounded-3xl shadow-2xl text-left border-l-4 border-l-rose-400 w-full max-w-2xl max-h-[60vh] md:max-h-[75vh] overflow-y-auto subtle-scrollbar">
+                    <p id="typewriter-text" class="text-sm md:text-xl leading-relaxed space-y-4 font-medium text-gray-100">
+                        <!-- Text injected via JS -->
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 4: Intinya -->
+        <section id="sec4" class="story-section">
+            <video autoplay loop muted playsinline class="bg-media">
+                <source src="https://xxnameless21.github.io/Koleksi-foto/GIF2.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-black/30 z-0"></div>
+            
+            <div class="glass p-8 md:p-12 rounded-3xl text-center max-w-md md:max-w-lg mx-4 shadow-2xl z-10 flex flex-col items-center">
+                <img src="https://feeldreams.github.io/bunga.gif" class="w-20 h-20 md:w-28 md:h-28 mb-4 md:mb-6" alt="Bunga">
+                <h2 class="text-3xl md:text-5xl font-caveat text-rose-300 mb-2 md:mb-4">Intinya,</h2>
+                <p class="text-xl md:text-3xl font-bold mb-8 md:mb-10 leading-snug">Kamu mau terus <br>bareng aku kan? 😍❤️</p>
+                
+                <div class="flex flex-row gap-4 w-full justify-center">
+                    <button onclick="pilih(true)" class="flex-1 bg-rose-500 hover:bg-rose-600 text-white font-bold py-3 md:py-4 px-4 md:px-8 rounded-xl md:rounded-2xl shadow-lg shadow-rose-500/30 transform hover:scale-105 transition text-lg md:text-xl">
+                        Mau 🥰
+                    </button>
+                    <button onclick="pilih(false)" class="flex-1 bg-gray-600/80 hover:bg-gray-700/80 text-white font-bold py-3 md:py-4 px-4 md:px-8 rounded-xl md:rounded-2xl backdrop-blur-md shadow-lg border border-white/20 transform hover:scale-105 transition text-lg md:text-xl">
+                        Gamau
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- SECTION 5: Akhir -->
+        <section id="sec5" class="story-section">
+            <img src="https://xxnameless21.github.io/Koleksi-foto/grid5.jpg" class="bg-media md:object-cover" alt="Background">
+            <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30 z-0"></div>
+            
+            <div class="max-w-5xl w-full mx-4 z-10 flex flex-col md:flex-row items-center justify-center gap-6 md:gap-16 mt-8 md:mt-0">
+                <!-- Polaroid Frame Main (Kiri di Laptop, Atas di HP) -->
+                <div class="polaroid w-56 md:w-80 rotate-2 md:-rotate-4 transform transition duration-500 z-20 flex-shrink-0">
+                    <img src="https://xxnameless21.github.io/Koleksi-foto/Grid1.jpg" alt="Foto Sarah">
+                </div>
+
+                <div class="glass p-6 md:p-10 rounded-2xl md:rounded-3xl text-center w-full max-w-lg shadow-2xl">
+                    <img id="stiker-akhir" src="" class="w-20 h-20 md:w-28 md:h-28 mx-auto mb-4 drop-shadow-md" alt="Sticker">
+                    <h1 id="judul-akhir" class="text-4xl md:text-6xl font-caveat text-rose-300 mb-3 md:mb-5"></h1>
+                    <p id="kalimat-akhir" class="text-base md:text-xl mb-6 md:mb-8 text-gray-100"></p>
+                    <p class="text-sm md:text-base text-gray-300 mb-6 italic">Jangan lupa balas pesan ke WhatsApp aku ya! ✨</p>
+                    
+                    <button onclick="kirimWA()" class="bg-green-500 hover:bg-green-600 text-white font-bold py-3 md:py-4 px-8 rounded-full shadow-lg shadow-green-500/50 transition duration-300 flex items-center justify-center gap-2 mx-auto w-full md:w-auto text-lg md:text-xl">
+                        <i class="fa-brands fa-whatsapp text-2xl"></i> Balas Pesan 💌
+                    </button>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <script>
+        // --- Variabel Global ---
+        const audio = document.getElementById('bg-music');
+        const welcomeScreen = document.getElementById('welcome-screen');
+        const mainContent = document.getElementById('main-content');
+        let isTypingStarted = false;
+        let pesanWhatsApp = "";
+
+        // Teks untuk Section 3
+        const longText = "Kalo kamu tanya kenapa aku bisa sampe dititik ini sama kamu, itu karena aku punya rasa nyaman tersendiri sama kamu.<br><br><b class='text-rose-300'>Kamu Tau?</b><br>Mungkin Gaada yang bisa bikin aku nyaman begini selain kamu...<br><br>dan Kehadiranmu mengembalikan sisi diriku yang dulu hilang sejak 2021. Tapi, kadang aku bertanya-tanya, apa aku sudah berhasil menjadi 'rumah' buat kamu? :)<br><br>Apapun masalah yang kamu hadapi, aku mohon ingatlah bahwa aku ada di sini. Di manapun kamu berada, aku siap jadi tempatmu pulang, sayang.<br><br><b class='text-rose-300 font-caveat text-2xl'>Aku tetap disini ko yang, Love u Sayangg.. ❤️</b>";
+
+        // --- Fungsi Buka Surat ---
+        function bukaSurat() {
+            // Mainkan musik
+            audio.play().catch((e) => console.log("Audio play failed:", e));
+            
+            // Sembunyikan cover, tampilkan konten utama
+            welcomeScreen.classList.add('opacity-0');
+            setTimeout(() => {
+                welcomeScreen.style.display = 'none';
+                mainContent.classList.remove('opacity-0', 'pointer-events-none');
+                document.body.style.overflow = 'auto'; // Izinkan scrolling di main content
+                mulaiHujanHati();
+            }, 1000);
+        }
+
+        // --- Efek Hujan Love (Berjatuhan) ---
+        function mulaiHujanHati() {
+            setInterval(() => {
+                const heart = document.createElement("i");
+                heart.className = "fas fa-heart floating-heart";
+                // Random posisi horizontal
+                heart.style.left = Math.random() * 100 + "vw";
+                // Random ukuran
+                const size = Math.random() * 1.5 + 0.5;
+                heart.style.fontSize = size + "rem";
+                // Random durasi jatuh (antara 4s - 8s)
+                heart.style.animationDuration = (Math.random() * 4 + 4) + "s";
+                
+                document.body.appendChild(heart);
+                
+                // Hapus elemen setelah animasi selesai agar tidak menumpuk di memori
+                setTimeout(() => {
+                    heart.remove();
+                }, 8000);
+            }, 400); // Munculkan setiap 400ms
+        }
+
+        // --- Efek Typewriter saat Scroll ke Section 3 ---
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                // Menunggu layarnya benar-benar pas di tengah (threshold: 0.8) baru mulai mengetik
+                if (entry.isIntersecting && entry.target.id === 'sec3' && !isTypingStarted) {
+                    isTypingStarted = true;
+                    // kecepatan 30ms / 0.7 = sekitar 43ms
+                    ketikTeks(longText, 'typewriter-text', 43);
+                }
+            });
+        }, { threshold: 0.8 });
+
+        observer.observe(document.getElementById('sec3'));
+
+        function ketikTeks(htmlText, elementId, speed) {
+            const el = document.getElementById(elementId);
+            const container = el.parentElement; // Ambil kotak glass tempat teks berada
+            const mainContent = document.getElementById('main-content');
+            
+            // 1. Kunci scroll halaman utama (gabisa geser section)
+            mainContent.style.overflowY = 'hidden'; 
+            // 2. Kunci scroll pada kotak teks agar pengguna tidak bisa scroll manual saat sedang diketik
+            container.style.overflowY = 'hidden';
+
+            el.innerHTML = '';
+            el.classList.add('type-cursor');
+            
+            let i = 0;
+            let isTag = false;
+            let text = "";
+            
+            function type() {
+                if (i < htmlText.length) {
+                    text += htmlText.charAt(i);
+                    el.innerHTML = text;
+                    
+                    if (htmlText.charAt(i) === '<') isTag = true;
+                    if (htmlText.charAt(i) === '>') isTag = false;
+                    
+                    i++;
+                    
+                    // 3. Auto-scroll kotak teks ke bawah secara perlahan mengikuti baris teks
+                    container.scrollTop = container.scrollHeight;
+                    
+                    if (isTag) {
+                        type();
+                    } else {
+                        setTimeout(type, speed);
+                    }
+                } else {
+                    el.classList.remove('type-cursor');
+                    // 4. Buka kembali kunci scroll setelah teks SELESAI diketik!
+                    mainContent.style.overflowY = 'scroll';
+                    container.style.overflowY = 'auto';
+                }
+            }
+            type();
+        }
+
+        // --- Logika Tombol Pilihan (Mau/Gamau) ---
+        function pilih(mau) {
+            const stiker = document.getElementById('stiker-akhir');
+            const judul = document.getElementById('judul-akhir');
+            const kalimat = document.getElementById('kalimat-akhir');
+            const sec5 = document.getElementById('sec5');
+
+            if(mau) {
+                stiker.src = "https://feeldreams.github.io/emawh.gif";
+                judul.innerHTML = "Yeayyy! 🥳";
+                kalimat.innerHTML = "Makasii udah mau nerima ya jadi pasangan km<br>kita jalan bareng terus yaaa, hihi 🤭❤️<br><br><b class='text-rose-400 font-caveat text-2xl'>I Love You Sarahhh</b>";
+                pesanWhatsApp = "Iyaa sayang, mau dong kita jalan bareng terus yaaa >< 💖";
+            } else {
+                stiker.src = "https://feeldreams.github.io/g5.gif";
+                judul.innerHTML = "Yahhh 😫";
+                kalimat.innerHTML = "Yaudah kalo kamu gamau,<br>makasi ya<br>Sorry uda ganggu, 😆❤️";
+                pesanWhatsApp = "Maaf ya, aku gamau dulu. Tapi makasih udah bikin ini ✨";
+            }
+
+            // Scroll otomatis ke section 5
+            sec5.scrollIntoView({ behavior: 'smooth' });
+        }
+
+        // --- Logika WhatsApp ---
+        function kirimWA() {
+            // Gunakan pesan default jika tidak klik tombol sebelumnya (meskipun user diarahkan wajib klik)
+            if(!pesanWhatsApp) pesanWhatsApp = "Hai!";
+            
+            // Ganti nomor dibawah dengan nomor tujuan WA (Gunakan format internasional tanpa +)
+            // Contoh: 6281234567890
+            let nomorWA = ""; 
+            
+            // Karena nomor WA tidak disediakan, saya set agar dia prompt membuka WA kosongan, 
+            // atau agan bisa edit variabel nomorWA di atas.
+            let url = "https://api.whatsapp.com/send?text=" + encodeURIComponent(pesanWhatsApp);
+            if(nomorWA !== "") {
+                url = "https://api.whatsapp.com/send?phone=" + nomorWA + "&text=" + encodeURIComponent(pesanWhatsApp);
+            }
+            
+            window.open(url, "_blank");
+        }
+
+        // --- Fungsi Tombol Scroll ---
+        function scrollKe(targetId) {
+            const target = document.getElementById(targetId);
+            if(target) {
+                target.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>
